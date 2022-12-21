@@ -6,5 +6,6 @@ COPY package*.json ./
 RUN pnpm install
 COPY . .
 RUN pnpn run build
+RUN pnpm test
 EXPOSE 8000
 CMD [ "pnpm","start" ]
