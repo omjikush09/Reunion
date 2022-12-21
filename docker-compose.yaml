@@ -1,0 +1,37 @@
+version: '3.5'
+
+services:
+  db:
+    container_name: postgres
+    image: postgres:15
+    environment:
+       POSTGRES_USER: ${POSTGRES_USER:-postgres}
+       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-1234}
+       POSTGRES_DB: ${POSTGRES_DB:-reunion}
+       PGDATA: /var/lib/postgresql/data/pgdata 
+    volumes:
+      - postgres:/var/lib/postgresql/data/pgdata 
+    ports:
+      - "5432:5432"
+    networks:
+      - backend-network
+    restart: unless-stopped 
+  backend:
+    build: .
+    container_name: backend
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:1234@db/reunion}
+      JWT_SECRET: ${JWT_SECRET}
+      PORT: ${PORT:-8000}
+    networks:
+      - backend-network
+networks:
+  backend-network:
+    driver: bridge
+volumes:
+  postgres:
+
