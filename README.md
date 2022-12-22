@@ -15,6 +15,8 @@ DATABASE_URL=
 JWT_SECRET=
 
 ```
+[Get Database URL](https://www.prisma.io/docs/concepts/database-connectors/postgresql)
+
 After adding this do following step.
 >pnpm install
 
