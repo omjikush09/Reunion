@@ -10,8 +10,12 @@ interface User {
 export const createNewUser=async (user:User)=>{
     try {
         const data=await prisma.user.create({ data: user });
+        console.log("dfd");
+        
         return data;
     } catch (error) {
+        console.log(error);
+        
          throw new Error("Something went wrong ");
     }
 }
