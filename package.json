@@ -7,11 +7,10 @@
     "test": "ts-mocha src/**/*.spec.ts",
     "build": "tsc",
     "dev": "nodemon src/index.ts",
-    "postinstall": "npm run build",
     "start": "node ./dist/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Omji Kushwaha",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^4.6.1",

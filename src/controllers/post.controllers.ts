@@ -48,7 +48,7 @@ export const getAllPost=async (req:IGetUserAuthInfoRequest,res:Response)=>{
     const {userId}=req?.auth;
     try {
         const data=await getPostsUserId(userId)
-        const newData=data.map((post)=>{
+        const newData=data.map((post:any)=>{
             return {id:post.id,title:post?.title,like:post?.like.length,comments:post?.comments,created_at:post.createdAt}
         })
         return res.status(200).json({
