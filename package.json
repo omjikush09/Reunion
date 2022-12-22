@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "ts-mocha src/**/*.spec.ts",
-    "build": "tsc",
+    "build": "npx prisma db push && npx prisma generate && tsc",
     "dev": "nodemon src/index.ts",
     "start": "node ./dist/index.js"
   },
